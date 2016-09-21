@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="username" value="root" />
+		<property name="password" value="ww" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis.xml" />
+		<property name="mapperLocations" value="classpath*:com/pd/*Dao.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="ehrUserDao" class="com.pd.ehr.user.dao.IEhrUserDao">
+		<property name="sessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="ehrUserService" class="com.pd.ehr.user.service.impl.EhrUserService">
+		<property name="ehrUserDao" ref="ehrUserDao" />
+	</bean>
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.pd"
+		use-default-filters="false">
+		<context:include-filter type="regex"
+			expression="[^.]+(Dao|Service)" />
+	</context:component-scan>
+</beans>

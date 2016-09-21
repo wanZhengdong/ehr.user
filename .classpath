@@ -4,8 +4,9 @@
 	<classpathentry kind="src" path="impl"/>
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="src" path="ut"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ehr.core"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/common.lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

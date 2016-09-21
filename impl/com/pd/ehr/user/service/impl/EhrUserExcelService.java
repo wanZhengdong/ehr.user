@@ -3,7 +3,7 @@ package com.pd.ehr.user.service.impl;
 import java.io.File;
 import java.util.List;
 
-import com.pd.ehr.core.itf.IEhrExcelService;
+import com.pd.api.IEhrExcelService;
 
 public class EhrUserExcelService implements IEhrExcelService
 {

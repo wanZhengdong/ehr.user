@@ -1,0 +1,30 @@
+<mapper namespace="com.mybatis.test.IUserOperation">
+
+	<select id="find" parameterType="int" resultType="com.pd.ehr.vo.EhrUser">
+		select * from `user` where user.id = #{id}
+	</select>
+
+
+	<select id="selectUsersByName" parameterType="string"
+		resultType="User">
+		select * from user where user.userName = #{userName}
+	</select>
+
+	<insert id="addUser" parameterType="User" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into user(userName,userAge,userAddress)
+		values(#{userName},#{userAge},#{userAddress})
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		update user set
+		userName=#{userName},userAge=#{userAge},userAddress=#{userAddress}
+		where id=#{id}
+	</update>
+
+	<delete id="deleteUser" parameterType="int">
+		delete from user where
+		id=#{id}
+	</delete>
+
+</mapper>
