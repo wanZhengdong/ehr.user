@@ -5,28 +5,35 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.pd.ehr.service.impl.UserService;
 import com.pd.ehr.user.service.IUserService;
-import com.pd.ehr.vo.User;
+import com.pd.ehr.user.vo.User;
 
 public class UserServiceTest
 {
-    private static IUserService userService;
+    private static IUserService service;
     
     @Test
-    public void testCount()
+    public void testAdd()
     {
-        System.out.println(1);
+        IUserService service = new UserService();
         User user = new User();
-        userService.getDao().add(user);
+        user.setName("test");
+        service.add(user);
+    }
+    
+    @Test
+    public void test1()
+    {
+        //
+        // service = new UserService();
+        // User user = new User();
+        // user.setName("test");
+        // service.add(user);
     }
     
     @BeforeClass
     public static void setUp()
     {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] {"spring-autoscan.xml"});
-        System.out.println(ctx.containsBean("ehrUserService"));
-        System.out.println(ctx.containsBean("iEhrUserService"));
-        Object bean = ctx.getBean(IUserService.class);
-        userService = ctx.getBean("ehrUserService", IUserService.class);
     }
 }

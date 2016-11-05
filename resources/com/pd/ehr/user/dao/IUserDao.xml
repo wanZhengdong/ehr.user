@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pd.ehr.user.dao.IUserDao">
+	<select id="search" parameterType="com.pd.ehr.user.vo.User" resultType="com.pd.ehr.user.vo.User">
+		select *
+		from user where user.userName = #{name}
+	</select>
+
+	<insert id="add" parameterType="com.pd.ehr.user.vo.User" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into user(userName)
+		values(#{userName})
+	</insert>
+
+	<update id="update" parameterType="com.pd.ehr.user.vo.User">
+		update user 
+		set
+			userName=#{userName},
+			userAge=#{userAge},
+			userAddress=#{userAddress}
+		where 
+			id=#{id}
+	</update>
+
+	<delete id="delete" parameterType="com.pd.ehr.user.vo.User">
+		delete from user 
+		where name=#{name}
+	</delete>
+
+</mapper>
