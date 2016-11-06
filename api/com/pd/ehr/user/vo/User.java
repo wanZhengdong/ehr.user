@@ -1,18 +1,9 @@
 package com.pd.ehr.user.vo;
 
-import com.pd.ehr.vo.DatabaseVO;
+import com.pd.api.DatabaseVO;
+import com.pd.api.annotation.Vo;
 
+@Vo(name = "user", params = {"userId", "userCN", "employeeNumber"})
 public class User extends DatabaseVO
 {
-    private String name;
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
 }
