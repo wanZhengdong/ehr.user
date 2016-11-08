@@ -1,17 +1,17 @@
 package com.pd.ehr.user;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.pd.ehr.service.impl.UserService;
 import com.pd.ehr.user.service.IUserService;
 import com.pd.ehr.user.vo.User;
+import com.pd.ehr.user.vo.UserF;
 
 public class UserServiceTest
 {
-    private static IUserService service;
     
     @Test
     public void testAdd()
@@ -19,17 +19,17 @@ public class UserServiceTest
         IUserService service = new UserService();
         User user = new User();
         user.setName("test");
-        service.add(user);
+        service.c(user);
     }
     
     @Test
-    public void test1()
+    public void testSelect()
     {
-        //
-        // service = new UserService();
-        // User user = new User();
-        // user.setName("test");
-        // service.add(user);
+        IUserService service = new UserService();
+        UserF userF = new UserF();
+        userF.setName("test");
+        User r = service.r(userF);
+        assertEquals("test", r.getName());
     }
     
     @BeforeClass

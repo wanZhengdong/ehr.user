@@ -21,8 +21,8 @@
 		<property name="dataSource" ref="jdbcDataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
-	<bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.pd.ehr.user.dao.IUserDao"></property>
+	<bean id="userDa" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.pd.ehr.user.da.UserDa"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 	</bean>
 </beans>

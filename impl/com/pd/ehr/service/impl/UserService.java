@@ -1,26 +1,24 @@
 package com.pd.ehr.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pd.ehr.core.util.EhrContextUtil;
-import com.pd.ehr.user.dao.IUserDao;
+import com.pd.ehr.user.da.UserDa;
 import com.pd.ehr.user.service.IUserService;
 
 @Service
 public class UserService implements IUserService
 {
-    @Autowired
-    private IUserDao userDao;
+    private UserDa userDa;
     
     @Override
-    public IUserDao getDao()
+    public UserDa getDao()
     {
-        if (userDao == null)
+        if (userDa == null)
         {
-            userDao = (IUserDao)EhrContextUtil.getBean("userDao", IUserDao.class);
+            userDa = (UserDa)EhrContextUtil.getBean("userDa", UserDa.class);
         }
-        return userDao;
+        return userDa;
     }
     
 }
